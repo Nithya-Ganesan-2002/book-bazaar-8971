@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BookBazaar Frontend
 
-## Getting Started
+A modern, minimalistic, light-themed Next.js application for browsing, searching, and previewing books. Built for SEO with SSR/SSG/ISR.
 
-First, run the development server:
+## Quickstart
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Install dependencies:
+   - npm install
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Configure environment:
+   - Copy .env.example to .env and set NEXT_PUBLIC_API_BASE_URL
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the dev server:
+   - npm run dev
+   - Open http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features in this scaffold
 
-## Learn More
+- Top navigation bar with primary/accent colors
+- Homepage with search bar, category sidebar, and featured books grid
+- Browse page with search and category filtering
+- Book detail page with sample preview action
+- Auth placeholder page (signin/signup tabs)
+- Centralized API layer, ready to switch to REST backend using NEXT_PUBLIC_API_BASE_URL
+- SSR/SSG/ISR examples (revalidate, generateStaticParams, dynamic)
+- Tailwind v4 with custom CSS variables using the provided palette
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- src/app: pages and layouts (Next.js App Router)
+- src/components: UI components (Navbar, SearchBar, CategorySidebar, BookCard, Footer)
+- src/lib: theme and API integration helpers
+- src/types: shared TypeScript models
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Theming
 
-## Deploy on Vercel
+Using provided palette:
+- Primary: #1a202c
+- Secondary: #2d3748
+- Accent: #e53e3e
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Global CSS exposes these as CSS variables.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Integrating a real backend
+
+- Update NEXT_PUBLIC_API_BASE_URL in .env
+- Swap mock implementations in src/lib/api.ts for http() calls to your REST endpoints
+- Keep server components fetching via src/lib/api.ts for SSR/SSG benefits
+

@@ -1,9 +1,10 @@
 import CategorySidebar from "@/components/CategorySidebar";
-import SearchBar from "@/components/SearchBar";
+import HomeSearchClient from "@/components/HomeSearchClient";
 import BookCard from "@/components/BookCard";
 import { getCategories, getFeaturedBooks } from "@/lib/api";
 
 export const revalidate = 60; // enable ISR for homepage
+// This file is a Server Component by default (no "use client")
 
 export default async function Home() {
   const [categories, featured] = await Promise.all([
@@ -18,14 +19,7 @@ export default async function Home() {
           <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
             Discover your next favorite book
           </h1>
-          <SearchBar
-            onSearch={(q) => {
-              if (typeof window !== "undefined") {
-                const url = q ? `/browse?q=${encodeURIComponent(q)}` : "/browse";
-                window.location.href = url;
-              }
-            }}
-          />
+          <HomeSearchClient />
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 import { searchBooks, getBooksByCategory, getCategories } from "@/lib/api";
 import CategorySidebar from "@/components/CategorySidebar";
-import SearchBar from "@/components/SearchBar";
+import BrowseSearchClient from "@/components/BrowseSearchClient";
 import BookCard from "@/components/BookCard";
 
 type BrowseProps = {
@@ -8,6 +8,7 @@ type BrowseProps = {
 };
 
 export const dynamic = "force-dynamic"; // ensure SSR for fresh queries
+// This file is a Server Component by default (no "use client")
 
 export default async function BrowsePage({ searchParams }: BrowseProps) {
   const q = (searchParams.q as string) || "";
@@ -28,17 +29,7 @@ export default async function BrowsePage({ searchParams }: BrowseProps) {
           <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
             Browse Books
           </h1>
-          <SearchBar
-            defaultValue={q}
-            onSearch={(query) => {
-              if (typeof window !== "undefined") {
-                const params = new URLSearchParams();
-                if (query) params.set("q", query);
-                if (category) params.set("category", category);
-                window.location.href = `/browse${params.toString() ? `?${params}` : ""}`;
-              }
-            }}
-          />
+          <BrowseSearchClient defaultValue={q} category={category} />
         </div>
       </section>
 

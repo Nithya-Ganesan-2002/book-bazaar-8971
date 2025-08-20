@@ -27,7 +27,9 @@ export default function CategorySidebar({ categories }: { categories: Category[]
             <li key={c.id} className="px-4 py-3 hover:bg-gray-50">
               <Link
                 href={`/browse?category=${encodeURIComponent(c.slug)}`}
+                prefetch={false}
                 className="flex items-center justify-between text-sm"
+                rel="nofollow"
               >
                 <span className="text-gray-800">{c.name}</span>
                 {typeof c.count === "number" && (

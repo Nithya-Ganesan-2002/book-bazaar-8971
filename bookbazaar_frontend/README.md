@@ -14,6 +14,16 @@ A modern, minimalistic, light-themed Next.js application for browsing, searching
    - npm run dev
    - Open http://localhost:3000
 
+## Clean builds and avoiding stale chunks
+
+If you change dependencies or module structure and encounter errors like "Cannot find module './447.js'", perform a clean build:
+- npm run clean
+- npm run build
+See TROUBLESHOOTING.md for more details.
+For CI/environment guidance and faster builds, see docs/CI_BUILD_NOTES.md.
+
+For code-splitting and lazy components, refer to docs/DYNAMIC_IMPORTS_GUIDE.md to ensure stable import paths and avoid missing chunk issues.
+
 ## Features in this scaffold
 
 - Top navigation bar with primary/accent colors
